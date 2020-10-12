@@ -20,6 +20,7 @@ class Snake():
         # Special thanks to YouTubers Mini - Cafetos and Knivens Beast for raising this issue!
         # Code adjustment courtesy of YouTuber Elija de Hoog
         self.score = 0
+        self.speed = 1
 
     def get_head_position(self):
         return self.positions[0]
@@ -46,6 +47,7 @@ class Snake():
         self.positions = [((screen_width/2), (screen_height/2))]
         self.direction = random.choice([up, down, left, right])
         self.score = 0
+        self.speed = 1
 
     def draw(self,surface):
         for p in self.positions:
@@ -58,6 +60,7 @@ class Snake():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+                pass
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     self.turn(up)
@@ -120,13 +123,14 @@ def main():
     myfont = pygame.font.SysFont("monospace",16)
 
     while (True):
-        clock.tick(5)
+        clock.tick(snake.speed)
         snake.handle_keys()
         drawGrid(surface)
         snake.move()
         if snake.get_head_position() == food.position:
             snake.length += 1
             snake.score += 1
+            snake.speed += 1
             food.randomize_position()
         snake.draw(surface)
         food.draw(surface)
