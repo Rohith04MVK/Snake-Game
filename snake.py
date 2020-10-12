@@ -2,23 +2,6 @@ import pygame
 import sys
 import random
 
-snake_r = random.randint(0, 255)
-snake_g = random.randint(0, 255)
-snake_b = random.randint(0, 255)
-
-food_r = random.randint(0, 255)
-food_g = random.randint(0, 255)
-food_b = random.randint(0, 255)
-
-x_grid_r = random.randint(0, 255)
-x_grid_g = random.randint(0, 255)
-x_grid_b = random.randint(0, 255)
-
-y_grid_r = random.randint(0, 255)
-y_grid_g = random.randint(0, 255)
-y_grid_b = random.randint(0, 255)
-
-
 class Snake():
     def __init__(self):
         self.length = 1
