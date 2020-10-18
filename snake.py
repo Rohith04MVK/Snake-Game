@@ -77,6 +77,9 @@ class Snake():
                     self.turn(left)
                 elif event.key == pygame.K_RIGHT:
                     self.turn(right)
+    
+
+
 
 
 class Food():
@@ -130,7 +133,7 @@ def main():
     food = Food()
 
     myfont = pygame.font.SysFont("monospace", 16)
-
+    high_score = 0
     while (True):
         clock.tick(snake.snake_speed)
         snake.handle_keys()
@@ -142,12 +145,17 @@ def main():
             snake.score += 1
             snake.snake_speed += 1
             food.randomize_position()
+            if snake.score > high_score:
+                high_score = snake.score
+            
 
         snake.draw(surface)
         food.draw(surface)
         screen.blit(surface, (0, 0))
         text = myfont.render(f"Score: {snake.score}", 1, (0, 0, 0))
+        text2 = myfont.render(f"High Score: {high_score}",1 ,(0,1,0) )
         screen.blit(text, (5, 10))
+        screen.blit(text2,(5, 26))
         pygame.display.update()
 
 
