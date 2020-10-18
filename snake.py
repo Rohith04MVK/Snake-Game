@@ -134,7 +134,7 @@ def main():
 
     myfont = pygame.font.SysFont("monospace", 16)
     high_score = 0
-    while (True):
+    while True:
         clock.tick(snake.snake_speed)
         snake.handle_keys()
         drawGrid(surface)
